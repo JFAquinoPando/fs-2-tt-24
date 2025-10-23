@@ -1,36 +1,63 @@
-// Función para validar si un correo electrónico es válido
-function validarCorreo(correo) {
-    // Expresión regular para validar formato de correo y que termine con letras
-    const regex = /^[\w-\.]+@([\w-]+\.)+[a-zA-Z]{2,}$/;
-    // Retorna true si el correo es inválido, false si es válido
-    return !regex.test(correo);
+"use strict";
+
+// Utilidades para validar y procesar correos
+
+// Expresión regular para validar formato de correo que termine con letras
+const EMAIL_REGEX = /^[\w.-]+@([\w-]+\.)+[a-zA-Z]{2,}$/;
+
+// Convierte distintos tipos de entrada a texto plano
+function toText(value) {
+  if (value == null) return "";
+  if (typeof value === "string") return value.trim();
+  if (typeof value.textContent === "string") return value.textContent.trim();
+  return String(value).trim();
 }
 
-// Selecciona todos los elementos <li> del documento
-const correos = document.querySelectorAll("li")
-// Convierte la NodeList en un array
-const correosIterar = Array.from(correos)
-// Agrega valores no HTML para probar la validación
-correosIterar.push(false)
-correosIterar.push(1234545454)
+// Determina si un correo es válido
+function esCorreoValido(value) {
+  const texto = toText(value);
+  return EMAIL_REGEX.test(texto);
+}
 
-// Selecciona el elemento con la clase 'output' para mostrar resultados
-const salida = document.querySelector(".output")
+// Determina si un correo es inválido
+function esCorreoInvalido(value) {
+  return !esCorreoValido(value);
+}
 
-// Filtra los correos inválidos
-const resultado = correosIterar.filter(correo => {
-    // Si es un elemento HTML, toma su texto; si no, usa el valor directamente
-    let valor = correo && correo.textContent !== undefined ? correo.textContent : correo;
-    // Muestra en consola el valor y si es válido o no
-    console.log(valor, validarCorreo(valor));
-    // Devuelve true si el correo es inválido
-    return validarCorreo(valor);
-}).map(e => e && e.textContent !== undefined ? e.textContent : e);
+// Obtiene los candidatos desde los elementos <li>
+function obtenerCandidatos() {
+  const nodos = document.querySelectorAll("li");
+  return Array.from(nodos).map(toText);
+}
 
-// Muestra el array de correos inválidos en consola
-console.log(resultado);
-// Inserta los correos inválidos en el elemento de salida, separados por " * "
-salida.insertAdjacentText("afterbegin", resultado.join(" * "))
+// Renderiza la lista de correos inválidos en el elemento de salida
+function renderizarInvalidos(invalidos, selectorSalida = ".output") {
+  const salida = document.querySelector(selectorSalida);
+  if (!salida) {
+    console.warn(`Elemento "${selectorSalida}" no encontrado; no se puede mostrar la salida.`);
+    return;
+  }
+  if (!invalidos.length) {
+    // Sin inválidos, no añadimos contenido; limpiar si se desea
+    // salida.textContent = "";
+    return;
+  }
+  salida.insertAdjacentText("afterbegin", invalidos.join(" * "));
+}
 
+// Flujo principal autosuficiente para evitar fugas al ámbito global
+(function main() {
+  const candidatos = obtenerCandidatos();
 
+  // Log de depuración: valor y si es inválido
+  candidatos.forEach((valor) => console.log(valor, esCorreoInvalido(valor)));
+
+  const invalidos = candidatos.filter(esCorreoInvalido);
+
+  // Muestra el array de correos inválidos en consola
+  console.log(invalidos);
+
+  // Inserta en el elemento de salida
+  renderizarInvalidos(invalidos);
+})();
 
