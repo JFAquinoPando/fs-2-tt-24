@@ -1,4 +1,4 @@
-        /* CSS BÁSICO */
+/* CSS BÁSICO */
         :root {
             --primary-color: #3b82f6; /* Azul */
             --secondary-color: #1f2937; /* Gris oscuro */
@@ -210,4 +210,38 @@ body.dark-mode #about {
 body.dark-mode footer {
     background-color: #111827;
     color: #f9fafb;
+}
+
+.about-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.about-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-content h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.about-content p {
+    margin-bottom: 1rem;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    background-color: #d1d5db;
+    height: 300px;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-color);
+    font-weight: bold;
 }
