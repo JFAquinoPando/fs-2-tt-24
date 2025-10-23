@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réplica de Estructura Web (Básica)</title>
+    <style>
+        /* CSS BÁSICO */
+        :root {
+            --primary-color: #3b82f6; /* Azul */
+            --secondary-color: #1f2937; /* Gris oscuro */
+            --light-bg: #f9fafb; /* Fondo claro */
+            --text-color: #374151; /* Texto gris */
+            --max-width: 1200px;
+        }
+
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* RESPONSIVE: Esconder links en móvil (simulación de menú hamburguesa) */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* HERO SECTION */
+        #hero {
+            background-color: var(--light-bg);
+            padding: 4rem 0 6rem;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.375rem; /* rounded corners */
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2563eb;
+        }
+
+        /* CONTENT SECTIONS */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* GRID LAYOUT FOR FEATURES */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Rovers Theme</div>
+                <ul class="nav-links">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Páginas</a></li>
+                    <li><a href="#">Portafolio</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECCIÓN PRINCIPAL (HERO) -->
+        <section id="hero">
+            <div class="container">
+                <h1>Construye Sitios Web Impresionantes</h1>
+                <p>Una solución moderna y adaptable para tu próximo proyecto digital. Estructura simple, resultados potentes.</p>
+                <a href="#" class="btn">Empezar Ahora</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE CARACTERÍSTICAS (FEATURES) -->
+        <section id="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nuestras Características Clave</h2>
+                    <p>Diseño enfocado en la usabilidad y rendimiento.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <h3>Diseño Responsive</h3>
+                        <p>Se adapta perfectamente a cualquier dispositivo, desde móviles hasta pantallas grandes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Código Limpio</h3>
+                        <p>Estructura HTML bien organizada y fácil de mantener.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Fácil Personalización</h3>
+                        <p>Modifica el CSS para crear tu propio estilo en minutos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Alto Rendimiento</h3>
+                        <p>Optimizado para cargar rápidamente y brindar una excelente experiencia.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Soporte Moderno</h3>
+                        <p>Totalmente compatible con los navegadores y estándares más recientes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Componentes Reutilizables</h3>
+                        <p>Diseño modular para construir rápidamente nuevas secciones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OTRA SECCIÓN DE CONTENIDO (e.g., Sobre Nosotros) -->
+        <section id="about" style="background-color: var(--light-bg);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Sobre la Estructura</h2>
+                </div>
+                <!-- Simulación de un layout de 2 columnas -->
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">La Base de tu Proyecto</h3>
+                        <p style="margin-bottom: 1rem;">Esta réplica se centra en el uso de etiquetas semánticas como `header`, `nav`, `main`, `section`, y `footer` para asegurar una buena accesibilidad y estructura para los motores de búsqueda.</p>
+                        <p>El diseño es totalmente adaptable (responsive) gracias al uso de `flexbox` y `grid` en el CSS, garantizando que la experiencia sea consistente en cualquier tamaño de pantalla.</p>
+                    </div>
+                    <!-- Placeholder de imagen (sin usar una imagen real) -->
+                    <div style="flex: 1; min-width: 300px; background-color: #d1d5db; height: 300px; border-radius: 0.5rem; display: flex; justify-content: center; align-items: center; color: var(--secondary-color); font-weight: bold;">
+                        Placeholder de Imagen
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Réplica de Estructura Web. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
