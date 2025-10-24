@@ -245,4 +245,15 @@ body.dark-mode footer {
     align-items: center;
     color: var(--secondary-color);
     font-weight: bold;
+    &:empty::before{
+        content: attr(title);
+    }
+}
+
+.img-full{
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 16/9;
+    height: auto;
+    border-radius: 0.5rem;
 }
